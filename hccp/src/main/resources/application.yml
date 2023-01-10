@@ -10,6 +10,12 @@ spring:
     username : choi
 
 
+# mybatis config
+  mybatis :
+    type-aliases-package : co.kr.pine.davinci.dto
+    mapper-locations : mapper/**/*.xml
+
+
 
 ## JPA Settings
 #spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
