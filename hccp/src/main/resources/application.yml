@@ -15,6 +15,15 @@ spring:
     type-aliases-package : co.kr.pine.davinci.dto
     mapper-locations : mapper/**/*.xml
 
+# Logging Set
+  logging :
+    level :
+      root : info
+    file :
+      path : logs
+
+      #logging.level.root = info
+      # logging.file.path= logs
 
 
 ## JPA Settings

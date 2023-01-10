@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.kr.pine.davinci.dao.auth.MemberDAO">
+
+    <select id="findByMemberId" resultType="MemberDTO">
+        select
+            a.frc_no ,
+            a.user_gbn ,
+            c.dtl_nm as role_nm,
+            a.email_addr ,
+            a.kor_nm ,
+            a.user_pw ,
+            b.role_gbn ,
+            d.license_number
+        from
+            public.tb_user a
+        left outer join
+            public.tb_role b
+        on
+            a.frc_no = b.frc_no and
+            a.email_addr = b.email_addr
+        left outer join
+            public.tb_common_cd c
+        on
+            c.group_cd = 'user_gbn' and
+            a.user_gbn = c.dtl_cd
+        left outer join
+            public.tb_emp d
+        on
+            a.email_addr = d.email_addr and
+            a.frc_no  = d.frc_no
+        where
+            a.use_yn = 'Y' and
+            a.email_addr = #{email_addr}
+    </select>
+
+
+</mapper>
